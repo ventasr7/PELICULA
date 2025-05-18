@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #000; /* Fondo negro */
+            color: white; /* Texto en blanco */
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .video-item {
+            background-color: #222; /* Fondo oscuro para los videos */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+        }
+        video {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .fullscreen-btn {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .fullscreen-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo">
+        <img src="logo.PNG" alt="Logo" width="200">
+    </div>
+
+    <div class="video-list">
+        <div class="video-item">
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>
+            <button class="fullscreen-btn" onclick="toggleFullScreen(this)">Pantalla Completa</button>
+        </div>
+        <div class="video-item">
+            <video controls>
+                <source src="video2.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>
+            <button class="fullscreen-btn" onclick="toggleFullScreen(this)">Pantalla Completa</button>
+        </div>
+        <!-- Agrega más videos aquí -->
+    </div>
+
+    <script>
+        function toggleFullScreen(button) {
+            const video = button.previousElementSibling;
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Firefox
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari y Opera
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                video.msRequestFullscreen();
+            }
+        }
+    </script>
+
+</body>
+</html>
