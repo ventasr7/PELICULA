@@ -48,26 +48,40 @@
 <body>
 
     <div class="logo">
-        <img src="logo.PNG" alt="Logo de la Página" width="150"> <!-- Cambia "logo.png" por la ruta de tu logo -->
+        <img src="logo.PNG" alt="Logo de la Página" width="150">
     </div>
 
     <div class="register" id="registerSection">
-        <h2>Registro</h2>
-        <input type="text" id="username" placeholder="Nombre de Usuario" required>
+        <h2>Ingreso</h2>
+        <input type="text" id="username" placeholder="CODIGO" required>
         <input type="password" id="password" placeholder="Contraseña" required>
-        <button onclick="register()">Aceptar</button>
+        <button onclick="login()">Aceptar</button>
     </div>
 
     <script>
-        function register() {
+        function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            if (username && password) {
-                alert('Usuario creado: ' + username);
+            // Combinaciones válidas de usuario y contraseña
+            const validCredentials = [
+                { username: '111', password: '111' },
+                { username: '333', password: '333' },
+                { username: 'usuario3', password: 'contrasena3' },
+                { username: 'usuario4', password: 'contrasena4' },
+                { username: 'usuario5', password: 'contrasena5' }
+            ];
+
+            // Verificar si las credenciales son válidas
+            const isValid = validCredentials.some(cred => 
+                cred.username === username && cred.password === password
+            );
+
+            if (isValid) {
+                alert('Bienvenido, ' + username + '!');
                 window.location.href = 'pelicula.html'; // Redirige a pelicula.html
             } else {
-                alert('Por favor, complete todos los campos.');
+                alert('Credenciales incorrectas, por favor intente de nuevo.');
             }
         }
     </script>
